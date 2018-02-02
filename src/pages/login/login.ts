@@ -37,7 +37,13 @@ export class LoginPage {
       //Au moment ou la requête est terminé, subscribe se déclenche !
       .subscribe( (data) => {
             var users = data;
-            console.log(users);
+            //console.log(users[0].name);
+            for(var i=0; i<users.length; i++){
+              if(users[i].name == 'Nyle' && users[i].email == 'j.alsina@hotmail.fr'){
+                console.log("OK")
+              }     
+              //console.log(users[i]);       
+            }
       },
         err => {
             alert(err);
@@ -45,13 +51,8 @@ export class LoginPage {
     
   }
 
-  login(){
-    // if(){
-    //   console.log("succes");
-    // }
-    // else{
-    //   console.log("fail");
-    // }
-  }
+  // login(){
+  //   console.log(this.users);
+  // }
 
 }
