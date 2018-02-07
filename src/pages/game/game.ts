@@ -18,6 +18,12 @@ export class GamePage {
   hide: boolean = true;
   hideD: boolean = true;
 
+  defenseF: boolean = false;
+  defenseC: boolean = false;
+
+  number: number;
+  // 0 == def faible 1 == def forte
+
   hide1: boolean = true;
   hide12: boolean = false;
   hide13: boolean = false;
@@ -64,41 +70,48 @@ export class GamePage {
   selected: number = 0;
   tour: boolean = true;
 
+  ia: number;
+  shoot: number;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GamePage');
+    // this.randomnumber();
+    // console.log(this.number);
+    // this.randomIa();
+    // console.log(this.ia);
   }
 
   showAttack(){
       this.hide = false;
   }
 
+  randomnumber(){
+    let rand = Math.floor((Math.random() * 2));
+    this.number = rand;
+  }
+
+  randomshoot(){
+    let randshoot = Math.floor((Math.random() * 2));
+    this.shoot = randshoot;
+  }
+
   choice1(){
     // alert('choose your attack Ordi 1 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 1;
-      this.tour = true;
-    }
   }
   choice2(){
     // alert('choose your attack Ordi 2 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 2;
-      this.tour = true;
-    }
   }
   choice3(){
     // alert('choose your attack Ordi 3 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 3;
-      this.tour = true;
-    }
   }
 
   choice4(){
@@ -128,27 +141,18 @@ export class GamePage {
 
   choice12(){
     // alert('choose your attack Ordi 1 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 12;
-      this.tour = true;
-    }
   }
   choice22(){
     // alert('choose your attack Ordi 2 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 22;
-      this.tour = true;
-    }
   }
   choice32(){
     // alert('choose your attack Ordi 3 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 32;
-      this.tour = true;
-    }
   }
 
   choice42(){
@@ -178,27 +182,18 @@ export class GamePage {
 
   choice13(){
     // alert('choose your attack Ordi 1 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 13;
-      this.tour = true;
-    }
   }
   choice23(){
     // alert('choose your attack Ordi 2 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 23;
-      this.tour = true;
-    }
   }
   choice33(){
     // alert('choose your attack Ordi 3 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 33;
-      this.tour = true;
-    }
   }
 
   choice43(){
@@ -228,27 +223,18 @@ export class GamePage {
 
   choice14(){
     // alert('choose your attack Ordi 1 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 14;
-      this.tour = true;
-    }
   }
   choice24(){
     // alert('choose your attack Ordi 2 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 24;
-      this.tour = true;
-    }
   }
   choice34(){
     // alert('choose your attack Ordi 3 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 34;
-      this.tour = true;
-    }
   }
 
   choice44(){
@@ -278,27 +264,18 @@ export class GamePage {
 
   choice15(){
     // alert('choose your attack Ordi 1 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 15;
-      this.tour = true;
-    }
   }
   choice25(){
     // alert('choose your attack Ordi 2 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 25;
-      this.tour = true;
-    }
   }
   choice35(){
     // alert('choose your attack Ordi 3 !');
-    if(this.tour == false){
       this.showAttack();
       this.selected = 35;
-      this.tour = true;
-    }
   }
 
   choice45(){
@@ -326,1272 +303,1922 @@ export class GamePage {
     }
   }
 
-  
+  randomIa(){
+    console.log("randomIA");
+    let randia = Math.floor((Math.random() * 3)+1);
+    this.ia = randia;
+    this.randomshoot();
+    //this.hideD = false;
+
+    if(this.shoot == 1){
+      console.log(this.shoot);
+      if(this.ia == 1 && this.hide1 == true || this.ia == 1 && this.hide12 == true || this.ia == 1 && this.hide13 == true || this.ia == 1 && this.hide14 == true || this.ia == 1 && this.hide15 == true){
+        console.log(this.ia);
+        if(this.hide1 == true && this.tour == false){
+          this.choice1();
+          if(this.selected == 1 && this.defenseF == false){
+            this.chara4 -= 2;
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide4 = false;
+              this.hide42 = true;
+      
+              this.hide1 = false;
+              this.hide12 = true;
+      
+              this.selected = 0;
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara4 = 2;
+                this.chara1 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide12 == true && this.tour == false){
+          this.choice12();
+          if(this.selected == 12){
+            this.chara4 -= 2;
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide42 = false;
+              this.hide43 = true;
+      
+              this.hide12 = false;
+              this.hide13 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara4 = 2;
+                this.chara1 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide13 == true && this.tour == false){
+          this.choice13();
+          if(this.selected == 13){
+            
+            this.chara4 -= 2;
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide43 = false;
+      
+              this.hide12 = false;
+              this.hide13 = true;
+      
+              this.selected = 0;
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara4 = 2;
+                this.chara1 = 2;
+                this.tour = true; 
+              }
+            }    
+          }
+        }
+        if(this.hide14 == true && this.tour == false){
+          this.choice14();
+          if(this.selected == 14){
+          this.chara4 -= 2;
+          if(this.chara4 <= 0){
+            alert("Back to inferior zone");
+            this.hide44 = false;
+            this.hide4 = true;
+    
+            this.hide14 = false;
+            this.hide1 = true;
+    
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.chara4 = 2;
+              this.chara1 = 2; 
+              this.tour = true;
+            }
+          }    
+        }
+        
+        if(this.hide15 == true && this.tour == false){
+          this.choice15();
+          if(this.selected == 15){
+            this.chara4 -= 2;
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide45 = false;
+              this.hide44 = true;
+      
+              this.hide15 = false;
+              this.hide14 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara4 = 2;
+                this.chara1 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+    }
+      if(this.ia == 2 && this.hide2 == true || this.ia == 2 && this.hide22 == true || this.ia == 2 && this.hide23 == true || this.ia == 2 && this.hide24 == true || this.ia == 2 && this.hide25 == true){
+        console.log(this.ia);
+        if(this.hide2 == true && this.tour == false){
+          this.choice2();
+          if(this.selected == 2){
+            this.chara5 -= 2;
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide5 = false;
+              this.hide52 = true;
+      
+              this.hide2 = false;
+              this.hide22 = true;
+      
+              this.selected = 0;
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara5 = 2; 
+                this.chara2 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide22 == true && this.tour == false){
+          this.choice22();
+          if(this.selected == 22){
+            this.chara5 -= 2;
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide52 = false;
+              this.hide53 = true;
+      
+              this.hide22 = false;
+              this.hide23 = true;
+      
+              this.selected = 0;
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara5 = 2;
+                this.chara2 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide23 == true && this.tour == false){
+          this.choice23();
+          if(this.selected == 23){
+            this.chara5 -= 2;
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide53 = false;
+      
+              this.hide22 = false;
+              this.hide23 = true;
+      
+              this.selected = 0;
+      
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara5 = 2;
+                this.chara2 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide24 == true && this.tour == false){
+          this.choice24();
+          if(this.selected == 24){
+            this.chara5 -= 2;
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide54 = false;
+              this.hide5 = true;
+      
+              this.hide24 = false;
+              this.hide2 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara5 = 2;
+                this.chara2 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide25 == true && this.tour == false){
+          this.choice25();
+          if(this.selected == 25){
+            this.chara5 -= 2;
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide55 = false;
+              this.hide54 = true;
+      
+              this.hide25 = false;
+              this.hide24 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara5 = 2;
+                this.chara2 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+      if(this.ia == 3 && this.hide3 == true || this.ia == 3 && this.hide32 == true || this.ia == 3 && this.hide33 == true || this.ia == 3 && this.hide34 == true || this.ia == 3 && this.hide35 == true){
+        console.log(this.ia);
+        if(this.hide3 == true && this.tour == false){
+          this.choice3();
+          if(this.selected == 3){
+            this.chara6 -= 2;
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide6 = false;
+              this.hide62 = true;
+      
+              this.hide3 = false;
+              this.hide32 = true;
+      
+              this.selected = 0;
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara6 = 2; 
+                this.chara3 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide32 == true && this.tour == false){
+          this.choice32();
+          if(this.selected == 32){
+            this.chara6 -= 2;
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide62 = false;
+              this.hide63 = true;
+      
+              this.hide32 = false;
+              this.hide33 = true;
+      
+              this.selected = 0;
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara6 = 2;
+                this.chara3 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide33 == true && this.tour == false){
+          this.choice33();
+          if(this.selected == 33){
+            this.chara6 -= 2;
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide63 = false;
+              
+      
+              this.hide32 = false;
+              this.hide33 = true;
+      
+              this.selected = 0;
+      
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara6 = 2;
+                this.chara3 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide34 == true && this.tour == false){
+          this.choice34();
+          if(this.selected == 34){
+            this.chara6 -= 2;
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide64 = false;
+              this.hide6 = true;
+      
+              this.hide34 = false;
+              this.hide3 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara6 = 2;
+                this.chara3 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        if(this.hide35 == true && this.tour == false){
+          this.choice35();
+          if(this.selected == 35){
+            this.chara6 -= 2;
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide65 = false;
+              this.hide64 = true;
+      
+              this.hide35 = false;
+              this.hide34 = true;
+      
+              this.selected = 0;
+              
+              if(this.selected == 0){
+                this.hide = true;
+                this.chara6 = 2;
+                this.chara3 = 2; 
+                this.tour = true;
+              }
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+    }
+    if(this.shoot == 0){
+      console.log(this.shoot);
+      
+      if(this.ia == 1 && this.hide1 == true || this.ia == 1 && this.hide12 == true || this.ia == 1 && this.hide13 == true || this.ia == 1 && this.hide14 == true || this.ia == 1 && this.hide15 == true){
+        console.log(this.ia);
+        if(this.hide1 == true && this.tour == false){
+          this.choice1();
+          if(this.selected == 1){
+            
+            this.chara4 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide4 = false;
+              this.hide42 = true;
+      
+              this.hide1 = false;
+              this.hide12 = true;
+      
+              this.chara4 = 2; 
+              this.chara1 = 2;
+            }    
+          } 
+        }
+        if(this.hide12 == true && this.tour == false){
+          this.choice12();
+          if(this.selected == 12){
+            this.chara4 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide42 = false;
+              this.hide43 = true;
+      
+              this.hide12 = false;
+              this.hide13 = true;
+      
+              this.chara4 = 2;
+              this.chara1 = 2;
+            }    
+          }
+        }
+        if(this.hide13 == true && this.tour == false){
+          this.choice13();
+          if(this.selected == 13){
+            
+            this.chara4 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide43 = false;
+      
+              this.hide12 = false;
+              this.hide13 = true;
+      
+              this.chara4 = 2;
+              this.chara1 = 2;
+              
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              
+            }    
+          }
+        }
+        if(this.hide14 == true && this.tour == false){
+          this.choice14();
+          if(this.selected == 14){
+            this.chara4 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide44 = false;
+              this.hide4 = true;
+      
+              this.hide14 = false;
+              this.hide1 = true;
+      
+              this.chara4 = 2;
+              this.chara1 = 2;
+            }    
+          }
+        }
+        if(this.hide15 == true && this.tour == false){
+          this.choice15();
+          if(this.selected == 15){
+            this.chara4 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara4 <= 0){
+              alert("Back to inferior zone");
+              this.hide45 = false;
+              this.hide44 = true;
+      
+              this.hide15 = false;
+              this.hide14 = true;
+      
+              this.chara4 = 2;
+              this.chara1 = 2;
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+      if(this.ia == 2 && this.hide2 == true || this.ia == 2 && this.hide22 == true || this.ia == 2 && this.hide23 == true || this.ia == 2 && this.hide24 == true || this.ia == 2 && this.hide25 == true){
+        console.log(this.ia);
+        if(this.hide2 == true && this.tour == false){
+          this.choice2();
+          if(this.selected == 2){
+            this.chara5 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide5 = false;
+              this.hide52 = true;
+      
+              this.hide2 = false;
+              this.hide22 = true;
+      
+              this.chara5 = 2; 
+              this.chara2 = 2;
+            }    
+          }
+          
+        }
+        if(this.hide22 == true && this.tour == false){
+          this.choice22();
+          if(this.selected == 22){
+            this.chara5 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide52 = false;
+              this.hide53 = true;
+      
+              this.hide22 = false;
+              this.hide23 = true;
+      
+              this.chara5 = 2;
+              this.chara2 = 2;
+            }    
+          }
+          
+        }
+        if(this.hide23 == true && this.tour == false){
+          this.choice23();
+          if(this.selected == 23){
+            this.chara5 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide53 = false;
+      
+              this.hide22 = false;
+              this.hide23 = true;
+      
+              this.chara5 = 2;
+              this.chara2 = 2;
+      
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              
+            }    
+          }  
+        }
+        if(this.hide24 == true && this.tour == false){
+          this.choice24();
+          if(this.selected == 24){
+            this.chara5 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide54 = false;
+              this.hide5 = true;
+      
+              this.hide24 = false;
+              this.hide2 = true;
+      
+              this.chara5 = 2;
+              this.chara2 = 2;
+            }    
+          }
+        }
+        if(this.hide25 == true && this.tour == false){
+          this.choice25();
+          if(this.selected == 25){
+            this.chara5 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara5 <= 0){
+              alert("Back to inferior zone");
+              this.hide55 = false;
+              this.hide54 = true;
+      
+              this.hide25 = false;
+              this.hide24 = true;
+      
+              this.chara5 = 2;
+              this.chara2 = 2;
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+      if(this.ia == 3 && this.hide3 == true || this.ia == 3 && this.hide32 == true || this.ia == 3 && this.hide33 == true || this.ia == 3 && this.hide34 == true || this.ia == 3 && this.hide35 == true){
+        console.log(this.ia);
+        if(this.hide3 == true && this.tour == false){
+          this.choice3();
+          if(this.selected == 3){
+            this.chara6 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide6 = false;
+              this.hide62 = true;
+      
+              this.hide3 = false;
+              this.hide32 = true;
+      
+              this.chara6 = 2; 
+              this.chara3 = 2;
+            }    
+          }
+        }
+        if(this.hide32 == true && this.tour == false){
+          this.choice32();
+          if(this.selected == 32){
+            this.chara6 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide62 = false;
+              this.hide63 = true;
+      
+              this.hide32 = false;
+              this.hide33 = true;
+      
+              this.chara6 = 2;
+              this.chara3 = 2;
+            }    
+          }
+        }
+        if(this.hide33 == true && this.tour == false){
+          this.choice33();
+          if(this.selected == 33){
+            this.chara6 -= 1;
+            this.selected = 0;
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide63 = false;
+              
+      
+              this.hide32 = false;
+              this.hide33 = true;
+      
+              this.chara6 = 2;
+              this.chara3 = 2;
+      
+              if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+                alert("WIN IA");
+              }
+              
+            }    
+          }
+        }
+        if(this.hide34 == true && this.tour == false){
+          this.choice34();
+          if(this.selected == 34){
+            this.chara6 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide64 = false;
+              this.hide6 = true;
+      
+              this.hide34 = false;
+              this.hide3 = true;
+      
+              this.chara6 = 2;
+              this.chara3 = 2;
+            }    
+          }
+        }
+        if(this.hide35 == true && this.tour == false){
+          this.choice35();
+          if(this.selected == 35){
+            this.chara6 -= 1;
+            this.selected = 0;
+            
+            if(this.selected == 0){
+              this.hide = true;
+              this.tour = true;
+            }
+            if(this.chara6 <= 0){
+              alert("Back to inferior zone");
+              this.hide65 = false;
+              this.hide64 = true;
+      
+              this.hide35 = false;
+              this.hide34 = true;
+      
+              this.chara6 = 2;
+              this.chara3 = 2;
+            }    
+          }
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+      }
+    }
+  }
 
   attackF(){
-
-    // Team Red 1
-
-    if(this.selected == 1){
-      
-      this.chara4 -= 2;
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide4 = false;
-        this.hide42 = true;
-
-        this.hide1 = false;
-        this.hide12 = true;
-
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 12){
-      this.chara4 -= 2;
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide42 = false;
-        this.hide43 = true;
-
-        this.hide12 = false;
-        this.hide13 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 13){
-      
-      this.chara4 -= 2;
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide43 = false;
-
-        this.hide12 = false;
-        this.hide13 = true;
-
-        this.selected = 0;
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 14){
-      this.chara4 -= 2;
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide44 = false;
-        this.hide4 = true;
-
-        this.hide14 = false;
-        this.hide1 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 15){
-      this.chara4 -= 2;
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide45 = false;
-        this.hide44 = true;
-
-        this.hide15 = false;
-        this.hide14 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-        }
-      }    
-    }
-
-    // Team Red 2
-
-    if(this.selected == 2){
-      this.chara5 -= 2;
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide5 = false;
-        this.hide52 = true;
-
-        this.hide2 = false;
-        this.hide22 = true;
-
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara5 = 2; 
-          this.chara2 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 22){
-      this.chara5 -= 2;
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide52 = false;
-        this.hide53 = true;
-
-        this.hide22 = false;
-        this.hide23 = true;
-
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara5 = 2;
-          this.chara2 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 23){
-      this.chara5 -= 2;
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide53 = false;
-
-        this.hide22 = false;
-        this.hide23 = true;
-
-        this.selected = 0;
-
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara5 = 2;
-          this.chara2 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 24){
-      this.chara5 -= 2;
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide54 = false;
-        this.hide5 = true;
-
-        this.hide24 = false;
-        this.hide2 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara5 = 2;
-          this.chara2 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 25){
-      this.chara5 -= 2;
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide55 = false;
-        this.hide54 = true;
-
-        this.hide25 = false;
-        this.hide24 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara5 = 2;
-          this.chara2 = 2; 
-        }
-      }    
-    }
-
-    // Team Red 3
-
-    if(this.selected == 3){
-      this.chara6 -= 2;
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide6 = false;
-        this.hide62 = true;
-
-        this.hide3 = false;
-        this.hide32 = true;
-
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara6 = 2; 
-          this.chara3 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 32){
-      this.chara6 -= 2;
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide62 = false;
-        this.hide63 = true;
-
-        this.hide32 = false;
-        this.hide33 = true;
-
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara6 = 2;
-          this.chara3 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 33){
-      this.chara6 -= 2;
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide63 = false;
-        
-
-        this.hide32 = false;
-        this.hide33 = true;
-
-        this.selected = 0;
-
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara6 = 2;
-          this.chara3 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 34){
-      this.chara6 -= 2;
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide64 = false;
-        this.hide6 = true;
-
-        this.hide34 = false;
-        this.hide3 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara6 = 2;
-          this.chara3 = 2; 
-        }
-      }    
-    }
-
-    if(this.selected == 35){
-      this.chara6 -= 2;
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide65 = false;
-        this.hide64 = true;
-
-        this.hide35 = false;
-        this.hide34 = true;
-
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara6 = 2;
-          this.chara3 = 2; 
-        }
-      }    
-    }
 
     // Team Red 4
 
     if(this.selected == 4){
-      this.chara1 -= 2;
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide1 = false;
-        this.hide14 = true;
 
-        this.hide4 = false;
-        this.hide44 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara1 -= 2;
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide1 = false;
+          this.hide14 = true;
+  
+          this.hide4 = false;
+          this.hide44 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara1 = 2; 
+            this.chara4 = 2; 
+            this.tour = false;
+          }
+        } 
+        this.randomIa();
+      }
+      else{
+        console.log('echec');
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara1 = 2; 
           this.chara4 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa(); 
+      }
     }
 
     if(this.selected == 42){
-      this.chara1 -= 2;
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide12 = false;
-        this.hide1 = true;
 
-        this.hide42 = false;
-        this.hide4 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara1 -= 2;
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide12 = false;
+          this.hide1 = true;
+  
+          this.hide42 = false;
+          this.hide4 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara1 = 2; 
+            this.chara4 = 2; 
+            this.tour = false;
+          }
+        }
+        this.randomIa();    
+      }
+      else{
+        console.log('echec');
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara1 = 2; 
           this.chara4 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 43){
-      this.chara1 -= 2;
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide13 = false;
-        this.hide12 = true;
 
-        this.hide43 = false;
-        this.hide42 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara1 -= 2;
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide13 = false;
+          this.hide12 = true;
+  
+          this.hide43 = false;
+          this.hide42 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara1 = 2; 
+            this.chara4 = 2; 
+            this.tour = false;
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara1 = 2; 
           this.chara4 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 44){
-      this.chara1 -= 2;
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide44 = false;
-        this.hide45 = true;
 
-        this.hide14 = false;
-        this.hide15 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara1 -= 2;
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide44 = false;
+          this.hide45 = true;
+  
+          this.hide14 = false;
+          this.hide15 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara1 = 2;
+            this.chara4 = 2; 
+            this.tour = false;
+          }
+        } 
+        this.randomIa();   
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara1 = 2;
           this.chara4 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 45){
-      this.chara1 -= 2;
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide15 = false;
-        
 
-        //this.hide45 = false;
-        //this.hide43 = true;
-
-        this.selected = 0;
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara1 -= 2;
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide15 = false;
+          
+  
+          //this.hide45 = false;
+          //this.hide43 = true;
+  
+          this.selected = 0;
+  
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara1 = 2;
+            this.chara4 = 2; 
+            this.tour = false;
+          }
         }
+        this.randomIa();    
+      }
+      else{
+        console.log("echec");
+        this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara1 = 2;
           this.chara4 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     // Team Red 5
 
     if(this.selected == 5){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide2 = false;
-        this.hide24 = true;
 
-        this.hide5 = false;
-        this.hide54 = true;
-
+      this.randomnumber();
+      if(this.number ==0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide2 = false;
+          this.hide24 = true;
+  
+          this.hide5 = false;
+          this.hide54 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2; 
+            this.chara5 = 2; 
+            this.tour = false;
+          }
+        }
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2; 
           this.chara5 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 52){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide22 = false;
-        this.hide2 = true;
 
-        this.hide52 = false;
-        this.hide5 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide22 = false;
+          this.hide2 = true;
+  
+          this.hide52 = false;
+          this.hide5 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2;
+            this.chara5 = 2;  
+            this.tour = false;
+          }
+        }  
+        this.randomIa();
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2;
           this.chara5 = 2;  
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      } 
     }
 
     if(this.selected == 53){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide23 = false;
-        this.hide22 = true;
 
-        this.hide53 = false;
-        this.hide52 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide23 = false;
+          this.hide22 = true;
+  
+          this.hide53 = false;
+          this.hide52 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2;
+            this.chara5 = 2; 
+            this.tour = false;
+          }
+        }   
+        this.randomIa(); 
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2;
           this.chara5 = 2; 
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 54){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide54 = false;
-        this.hide55 = true;
-
-        this.hide24 = false;
-        this.hide25 = true;
-
+      
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide54 = false;
+          this.hide55 = true;
+  
+          this.hide24 = false;
+          this.hide25 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2;
+            this.chara5 = 2;
+            this.tour = false;
+          }
+        }  
+        this.randomIa(); 
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2;
           this.chara5 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 55){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide25 = false;
-        
 
-        // this.hide5 = false;
-        // this.hide53 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide25 = false;
+          
+  
+          // this.hide5 = false;
+          // this.hide53 = true;
+  
+          this.selected = 0;
+  
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2;
+            this.chara5 = 2;
+            this.tour = false;
+          }
+        } 
+        this.randomIa();   
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
-        }
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2;
           this.chara5 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     // Team Red 6
 
     if(this.selected == 6){
-      this.chara3 -= 2;
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide3 = false;
-        this.hide34 = true;
 
-        this.hide6 = false;
-        this.hide64 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara3 -= 2;
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide3 = false;
+          this.hide34 = true;
+  
+          this.hide6 = false;
+          this.hide64 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara3 = 2; 
+            this.chara6 = 2;
+            this.tour = false;
+          }
+        } 
+        this.randomIa();   
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara3 = 2; 
           this.chara6 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 62){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide32 = false;
-        this.hide3 = true;
 
-        this.hide62 = false;
-        this.hide6 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide32 = false;
+          this.hide3 = true;
+  
+          this.hide62 = false;
+          this.hide6 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2; 
+            this.chara6 = 2;
+            this.tour = false;
+          }
+        }   
+        this.randomIa();
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2; 
           this.chara6 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 63){
-      this.chara2 -= 2;
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide33 = false;
-        this.hide32 = true;
 
-        this.hide63 = false;
-        this.hide62 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara2 -= 2;
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide33 = false;
+          this.hide32 = true;
+  
+          this.hide63 = false;
+          this.hide62 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara2 = 2; 
+            this.chara6 = 2;
+            this.tour = false;
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara2 = 2; 
           this.chara6 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 64){
-      this.chara3 -= 2;
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide64 = false;
-        this.hide65 = true;
 
-        this.hide34 = false;
-        this.hide35 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara3 -= 2;
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide64 = false;
+          this.hide65 = true;
+  
+          this.hide34 = false;
+          this.hide35 = true;
+  
+          this.selected = 0;
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara3 = 2;
+            this.chara6 = 2;
+            this.tour = false;
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
         if(this.selected == 0){
           this.hide = true;
           this.chara3 = 2;
           this.chara6 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
 
     if(this.selected == 65){
-      this.chara3 -= 2;
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide35 = false;
-        
 
-        // this.hide5 = false;
-        // this.hide53 = true;
-
+      this.randomnumber();
+      if(this.number == 0){
+        console.log("touch");
+        this.chara3 -= 2;
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide35 = false;
+          
+  
+          // this.hide5 = false;
+          // this.hide53 = true;
+  
+          this.selected = 0;
+  
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+          if(this.selected == 0){
+            this.hide = true;
+            this.chara3 = 2;
+            this.chara6 = 2;
+            this.tour = false;
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
         this.selected = 0;
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
-        }
         if(this.selected == 0){
           this.hide = true;
           this.chara3 = 2;
           this.chara6 = 2;
+          this.tour = false;
         }
-      }    
+        this.randomIa();
+      }
     }
-
   }
 
   attackC(){
 
-    // Team Red 1
-
-    if(this.selected == 1){
-      
-      this.chara4 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-
-      }
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide4 = false;
-        this.hide42 = true;
-
-        this.hide1 = false;
-        this.hide12 = true;
-
-        this.chara4 = 2; 
-        this.chara1 = 2;
-      }    
-    }
-
-    if(this.selected == 12){
-      this.chara4 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide42 = false;
-        this.hide43 = true;
-
-        this.hide12 = false;
-        this.hide13 = true;
-
-        this.chara4 = 2;
-        this.chara1 = 2;
-      }    
-    }
-
-    if(this.selected == 13){
-      
-      this.chara4 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide43 = false;
-
-        this.hide12 = false;
-        this.hide13 = true;
-
-        this.chara4 = 2;
-        this.chara1 = 2;
-        
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        
-      }    
-    }
-
-    if(this.selected == 14){
-      this.chara4 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-       
-      }
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide44 = false;
-        this.hide4 = true;
-
-        this.hide14 = false;
-        this.hide1 = true;
-
-        this.chara4 = 2;
-        this.chara1 = 2;
-      }    
-    }
-
-    if(this.selected == 15){
-      this.chara4 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-       
-      }
-      if(this.chara4 <= 0){
-        alert("Back to inferior zone");
-        this.hide45 = false;
-        this.hide44 = true;
-
-        this.hide15 = false;
-        this.hide14 = true;
-
-        this.chara4 = 2;
-        this.chara1 = 2;
-      }    
-    }
-
-    // Team Red 2
-
-    if(this.selected == 2){
-      this.chara5 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-       
-      }
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide5 = false;
-        this.hide52 = true;
-
-        this.hide2 = false;
-        this.hide22 = true;
-
-        this.chara5 = 2; 
-        this.chara2 = 2;
-      }    
-    }
-
-    if(this.selected == 22){
-      this.chara5 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide52 = false;
-        this.hide53 = true;
-
-        this.hide22 = false;
-        this.hide23 = true;
-
-        this.chara5 = 2;
-        this.chara2 = 2;
-      }    
-    }
-
-    if(this.selected == 23){
-      this.chara5 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide53 = false;
-
-        this.hide22 = false;
-        this.hide23 = true;
-
-        this.chara5 = 2;
-        this.chara2 = 2;
-
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        
-      }    
-    }
-
-    if(this.selected == 24){
-      this.chara5 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide54 = false;
-        this.hide5 = true;
-
-        this.hide24 = false;
-        this.hide2 = true;
-
-        this.chara5 = 2;
-        this.chara2 = 2;
-      }    
-    }
-
-    if(this.selected == 25){
-      this.chara5 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara5 <= 0){
-        alert("Back to inferior zone");
-        this.hide55 = false;
-        this.hide54 = true;
-
-        this.hide25 = false;
-        this.hide24 = true;
-
-        this.chara5 = 2;
-        this.chara2 = 2;
-      }    
-    }
-
-    // Team Red 3
-
-    if(this.selected == 3){
-      this.chara6 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide6 = false;
-        this.hide62 = true;
-
-        this.hide3 = false;
-        this.hide32 = true;
-
-        this.chara6 = 2; 
-        this.chara3 = 2;
-      }    
-    }
-
-    if(this.selected == 32){
-      this.chara6 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide62 = false;
-        this.hide63 = true;
-
-        this.hide32 = false;
-        this.hide33 = true;
-
-        this.chara6 = 2;
-        this.chara3 = 2;
-      }    
-    }
-
-    if(this.selected == 33){
-      this.chara6 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide63 = false;
-        
-
-        this.hide32 = false;
-        this.hide33 = true;
-
-        this.chara6 = 2;
-        this.chara3 = 2;
-
-        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false){
-          alert("WIN");
-        }
-        
-      }    
-    }
-
-    if(this.selected == 34){
-      this.chara6 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide64 = false;
-        this.hide6 = true;
-
-        this.hide34 = false;
-        this.hide3 = true;
-
-        this.chara6 = 2;
-        this.chara3 = 2;
-      }    
-    }
-
-    if(this.selected == 35){
-      this.chara6 -= 1;
-      this.selected = 0;
-      
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara6 <= 0){
-        alert("Back to inferior zone");
-        this.hide65 = false;
-        this.hide64 = true;
-
-        this.hide35 = false;
-        this.hide34 = true;
-
-        this.chara6 = 2;
-        this.chara3 = 2;
-      }    
-    }
 
     // Team Red 4
 
     if(this.selected == 4){
-      this.chara1 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log('touch');
+        this.chara1 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+        }
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide1 = false;
+          this.hide14 = true;
+  
+          this.hide4 = false;
+          this.hide44 = true;
+  
+          this.chara1 = 2;
+          this.chara4 = 2; 
+          this.tour = false;
+        }
+        this.randomIa();
       }
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide1 = false;
-        this.hide14 = true;
-
-        this.hide4 = false;
-        this.hide44 = true;
-
-        this.chara1 = 2;
-        this.chara4 = 2; 
+      else{
+        console.log('echec');
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
       }    
     }
 
     if(this.selected == 42){
-      this.chara1 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara1 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide12 = false;
+          this.hide1 = true;
+  
+          this.hide42 = false;
+          this.hide4 = true;
+  
+          this.chara1 = 2; 
+          this.chara4 = 2; 
+          this.tour = false;
+        }    
+        this.randomIa();
       }
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide12 = false;
-        this.hide1 = true;
-
-        this.hide42 = false;
-        this.hide4 = true;
-
-        this.chara1 = 2; 
-        this.chara4 = 2; 
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 43){
-      this.chara1 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara1 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide13 = false;
+          this.hide12 = true;
+  
+          this.hide43 = false;
+          this.hide42 = true;
+  
+          this.chara1 = 2; 
+          this.chara4 = 2; 
+          this.tour = false;
+        }
+        this.randomIa();    
       }
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide13 = false;
-        this.hide12 = true;
-
-        this.hide43 = false;
-        this.hide42 = true;
-
-        this.chara1 = 2; 
-        this.chara4 = 2; 
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 44){
-      this.chara1 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara1 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide44 = false;
+          this.hide45 = true;
+  
+          this.hide14 = false;
+          this.hide15 = true;
+  
+          this.chara1 = 2;
+          this.chara4 = 2; 
+          this.tour = false;
+        }  
+        this.randomIa();  
       }
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide44 = false;
-        this.hide45 = true;
-
-        this.hide14 = false;
-        this.hide15 = true;
-
-        this.chara1 = 2;
-        this.chara4 = 2; 
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 45){
-      this.chara1 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara1 <= 0){
-        alert("Back to inferior zone");
-        this.hide15 = false;
-        
 
-        //this.hide45 = false;
-        //this.hide43 = true;
-
-        this.chara1 = 2;
-        this.chara4 = 2; 
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara1 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
         }
-        
-      }    
+        if(this.chara1 <= 0){
+          alert("Back to inferior zone");
+          this.hide15 = false;
+          
+  
+          //this.hide45 = false;
+          //this.hide43 = true;
+  
+          this.chara1 = 2;
+          this.chara4 = 2; 
+          this.tour = false;
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+        }   
+        this.randomIa(); 
+      }
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     // Team Red 5
 
     if(this.selected == 5){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide2 = false;
+          this.hide24 = true;
+  
+          this.hide5 = false;
+          this.hide54 = true;
+  
+          this.chara2 = 2; 
+          this.chara5 = 2; 
+          this.tour = false;
+        } 
+        this.randomIa();   
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide2 = false;
-        this.hide24 = true;
-
-        this.hide5 = false;
-        this.hide54 = true;
-
-        this.chara2 = 2; 
-        this.chara5 = 2; 
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 52){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-       
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+         
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide22 = false;
+          this.hide2 = true;
+  
+          this.hide52 = false;
+          this.hide5 = true;
+  
+          this.chara2 = 2; 
+          this.chara5 = 2;
+          this.tour = false;
+        }  
+        this.randomIa();  
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide22 = false;
-        this.hide2 = true;
-
-        this.hide52 = false;
-        this.hide5 = true;
-
-        this.chara2 = 2; 
-        this.chara5 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 53){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide23 = false;
+          this.hide22 = true;
+  
+          this.hide53 = false;
+          this.hide52 = true;
+  
+          this.chara2 = 2; 
+          this.chara5 = 2;
+          this.tour = false;
+        } 
+        this.randomIa();   
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide23 = false;
-        this.hide22 = true;
-
-        this.hide53 = false;
-        this.hide52 = true;
-
-        this.chara2 = 2; 
-        this.chara5 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 54){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide54 = false;
+          this.hide55 = true;
+  
+          this.hide24 = false;
+          this.hide25 = true;
+  
+          this.chara2 = 2;
+          this.chara5 = 2;
+          this.tour = false;
+        }  
+        this.randomIa();
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide54 = false;
-        this.hide55 = true;
-
-        this.hide24 = false;
-        this.hide25 = true;
-
-        this.chara2 = 2;
-        this.chara5 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      } 
     }
 
     if(this.selected == 55){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide25 = false;
-        
 
-        // this.hide5 = false;
-        // this.hide53 = true;
-
-        this.chara2 = 2;
-        this.chara5 = 2;
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
         }
-        
-      }    
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide25 = false;
+          
+  
+          // this.hide5 = false;
+          // this.hide53 = true;
+  
+          this.chara2 = 2;
+          this.chara5 = 2;
+          this.tour = false;
+  
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     // Team Red 6
 
     if(this.selected == 6){
-      this.chara3 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara3 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide3 = false;
+          this.hide34 = true;
+  
+          this.hide6 = false;
+          this.hide64 = true;
+  
+          this.chara3 = 2; 
+          this.chara6 = 2;
+          this.tour = false;
+        }  
+        this.randomIa();  
       }
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide3 = false;
-        this.hide34 = true;
-
-        this.hide6 = false;
-        this.hide64 = true;
-
-        this.chara3 = 2; 
-        this.chara6 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 62){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide32 = false;
+          this.hide3 = true;
+  
+          this.hide62 = false;
+          this.hide6 = true;
+  
+          this.chara3 = 2; 
+          this.chara6 = 2;
+          this.tour = false;
+        }  
+        this.randomIa(); 
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide32 = false;
-        this.hide3 = true;
-
-        this.hide62 = false;
-        this.hide6 = true;
-
-        this.chara3 = 2; 
-        this.chara6 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 63){
-      this.chara2 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara2 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara2 <= 0){
+          alert("Back to inferior zone");
+          this.hide33 = false;
+          this.hide32 = true;
+  
+          this.hide63 = false;
+          this.hide62 = true;
+  
+          this.chara3 = 2;
+          this.chara6 = 2; 
+          this.tour = false;
+        }  
+        this.randomIa();
       }
-      if(this.chara2 <= 0){
-        alert("Back to inferior zone");
-        this.hide33 = false;
-        this.hide32 = true;
-
-        this.hide63 = false;
-        this.hide62 = true;
-
-        this.chara3 = 2;
-        this.chara6 = 2; 
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      } 
     }
 
     if(this.selected == 64){
-      this.chara3 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
+
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara3 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
+        }
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide64 = false;
+          this.hide65 = true;
+  
+          this.hide34 = false;
+          this.hide35 = true;
+  
+          this.chara3 = 2;
+          this.chara6 = 2;
+          this.tour = false;
+        }  
+        this.randomIa();  
       }
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide64 = false;
-        this.hide65 = true;
-
-        this.hide34 = false;
-        this.hide35 = true;
-
-        this.chara3 = 2;
-        this.chara6 = 2;
-      }    
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
 
     if(this.selected == 65){
-      this.chara3 -= 1;
-      this.selected = 0;
-      if(this.selected == 0){
-        this.hide = true;
-        
-      }
-      if(this.chara3 <= 0){
-        alert("Back to inferior zone");
-        this.hide35 = false;
-        
 
-        // this.hide5 = false;
-        // this.hide53 = true;
-
-        this.chara3 = 2;
-        this.chara6 = 2
-
-        if(this.hide1 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide34 == false && this.hide35 == false){
-          alert("WIN");
+      this.randomnumber();
+      if(this.number == 1){
+        console.log("touch");
+        this.chara3 -= 1;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          
         }
-      }    
+        if(this.chara3 <= 0){
+          alert("Back to inferior zone");
+          this.hide35 = false;
+          
+  
+          // this.hide5 = false;
+          // this.hide53 = true;
+  
+          this.chara3 = 2;
+          this.chara6 = 2
+          this.tour = false;
+          if(this.hide1 == false && this.hide12 == false && this.hide13 == false && this.hide14 == false && this.hide15 == false && this.hide2 == false && this.hide22 == false && this.hide23 == false && this.hide24 == false && this.hide25 == false && this.hide3 == false && this.hide32 == false && this.hide33 == false && this.hide34 == false && this.hide35 == false){
+            alert("WIN PLAYER");
+          }
+        }  
+        this.randomIa();  
+      }
+      else{
+        console.log("echec");
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = false;
+        }
+        this.randomIa();
+      }
     }
   }
 }
