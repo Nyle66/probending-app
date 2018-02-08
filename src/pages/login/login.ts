@@ -29,7 +29,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    //console.log('ionViewDidLoad LoginPage');
   }
 
   ionViewDidEnter(){
@@ -40,7 +40,7 @@ export class LoginPage {
             //console.log(users[0].name);
             for(var i=0; i<users.length; i++){
               if(users[i].name == 'Nyle' && users[i].email == 'j.alsina@hotmail.fr'){
-                console.log("OK")
+                //console.log("OK")
               }     
               //console.log(users[i]);       
             }

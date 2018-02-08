@@ -16,7 +16,7 @@
 <ion-content padding id="fond">
   <ion-grid>
     <ion-row>
-      <ion-col col-4 class="zone team1"> <ion-icon name="body" *ngIf="hide15 == true"  class="15 red"></ion-icon></ion-col>
+      <ion-col col-4 class="zone team1"> <ion-icon name="body" *ngIf="hide15 == true" (click)="choice15()" class="15 red"></ion-icon></ion-col>
       <ion-col col-4 class="zone team1"> <ion-icon name="body" *ngIf="hide25 == true"  class="25 red"></ion-icon></ion-col>
       <ion-col col-4 class="zone team1"> <ion-icon name="body" *ngIf="hide35 == true"  class="35 red"></ion-icon></ion-col>
     </ion-row>
@@ -63,7 +63,7 @@
       </div>
       <div *ngIf="hideD == false" id="defense">
         <h2>Choix :</h2>
-        <button ion-button (click)="defenseF = true">Defense frontale</button><button ion-button (click)="defenseC = true">Defense de coté</button>
+        <button ion-button (click)="defenseF = 1" (click)="setDefenseF()">Defense frontale</button><button ion-button (click)="defenseC = 1" (click)="setDefenseC()">Defense de coté</button>
       </div>
     </ion-row>
   </ion-grid>
