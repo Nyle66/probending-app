@@ -374,8 +374,7 @@ export class GamePage {
           if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
             alert("WIN IA");
           }
-          
-        }    
+        }   
       }
     }
     if(this.hide14 == true && this.tour == false && this.defenseC == 1){
@@ -469,7 +468,6 @@ export class GamePage {
           this.chara2 = 2;
         }    
       }
-      
     }
     if(this.hide23 == true && this.tour == false && this.defenseC == 1){
 
@@ -495,7 +493,7 @@ export class GamePage {
             alert("WIN IA");
           }
         }    
-      }  
+      } 
     }
     if(this.hide24 == true && this.tour == false && this.defenseC == 1){
 
@@ -615,7 +613,6 @@ export class GamePage {
           if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
             alert("WIN IA");
           }
-          
         }    
       }
     }
@@ -683,6 +680,11 @@ export class GamePage {
       
       this.chara4 -= 1;
       this.defenseF = 0;
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
+      }
       if(this.chara4 <= 0){
         alert("Back to inferior zone");
         this.hide4 = false;
@@ -691,18 +693,20 @@ export class GamePage {
         this.hide1 = false;
         this.hide12 = true;
 
-        this.selected = 0;
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-          this.tour = true;
-        }
-      }    
+        this.chara4 = 2;
+        this.chara1 = 2; 
+
+      }   
     }
     if(this.selected == 12 && this.defenseF == 1 && this.tour == false){
       this.chara4 -= 1;
       this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
+      }
       if(this.chara4 <= 0){
         alert("Back to inferior zone");
         this.hide42 = false;
@@ -711,20 +715,20 @@ export class GamePage {
         this.hide12 = false;
         this.hide13 = true;
 
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-          this.tour = true;
-        }
-      }    
+        this.chara4 = 2;
+        this.chara1 = 2; 
+      }  
     }
     if(this.selected == 13 && this.defenseF == 1 && this.tour == false){
       
       this.chara4 -= 1;
       this.defenseF = 0;
+
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true; 
+      }
       if(this.chara4 <= 0){
         alert("Back to inferior zone");
         this.hide43 = false;
@@ -732,21 +736,22 @@ export class GamePage {
         this.hide12 = false;
         this.hide13 = true;
 
-        this.selected = 0;
+        this.chara4 = 2;
+        this.chara1 = 2;
         if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
           alert("WIN IA");
-        }
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2;
-          this.tour = true; 
         }
       }    
     }
     if(this.selected == 14 && this.defenseF == 1 && this.tour == false){
       this.chara4 -= 1;
       this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true; 
+        this.tour = true;
+      }
       if(this.chara4 <= 0){
         alert("Back to inferior zone");
         this.hide44 = false;
@@ -755,19 +760,19 @@ export class GamePage {
         this.hide14 = false;
         this.hide1 = true;
 
-        this.selected = 0;
-        
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-          this.tour = true;
-        }
+        this.chara4 = 2;
+        this.chara1 = 2;
       }    
     }
     if(this.selected == 15 && this.defenseF == 1 && this.tour == false){
       this.chara4 -= 1;
       this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
+      }
       if(this.chara4 <= 0){
         alert("Back to inferior zone");
         this.hide45 = false;
@@ -775,24 +780,22 @@ export class GamePage {
 
         this.hide15 = false;
         this.hide14 = true;
-
-        this.selected = 0;
         
-        if(this.selected == 0){
-          this.hide = true;
-          this.chara4 = 2;
-          this.chara1 = 2; 
-          this.tour = true;
-        }
-      }    
+        this.chara4 = 2;
+        this.chara1 = 2; 
+      }  
     }
     
 
-    if(this.hide2 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 2 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 2){
         this.chara5 -= 1;
         this.defenseF = 0;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = true;
+        }
         if(this.chara5 <= 0){
           alert("Back to inferior zone");
           this.hide5 = false;
@@ -801,21 +804,20 @@ export class GamePage {
           this.hide2 = false;
           this.hide22 = true;
   
-          this.selected = 0;
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara5 = 2; 
-            this.chara2 = 2; 
-            this.tour = true;
-          }
+          this.chara5 = 2; 
+          this.chara2 = 2; 
         }    
       }
-    }
-    if(this.hide22 == true && this.tour == false && this.defenseF == 1){
+    
+    if(this.selected == 22 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 22){
         this.chara5 -= 1;
         this.defenseF = 0;
+        this.selected = 0;
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = true;
+        }
         if(this.chara5 <= 0){
           alert("Back to inferior zone");
           this.hide52 = false;
@@ -824,210 +826,189 @@ export class GamePage {
           this.hide22 = false;
           this.hide23 = true;
   
-          this.selected = 0;
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara5 = 2;
-            this.chara2 = 2; 
-            this.tour = true;
-          }
+          this.chara5 = 2;
+          this.chara2 = 2; 
         }    
       }
-    }
-    if(this.hide23 == true && this.tour == false && this.defenseF == 1){
+    
+    if(this.selected == 23 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 23){
-        this.chara5 -= 1;
-        this.defenseF = 0;
-        if(this.chara5 <= 0){
-          alert("Back to inferior zone");
-          this.hide53 = false;
-  
-          this.hide22 = false;
-          this.hide23 = true;
-  
-          this.selected = 0;
-  
-          if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
-            alert("WIN IA");
-          }
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara5 = 2;
-            this.chara2 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara5 -= 1;
+      this.defenseF = 0;
+        
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
       }
-    }
-    if(this.hide24 == true && this.tour == false && this.defenseF == 1){
+      if(this.chara5 <= 0){
+        alert("Back to inferior zone");
+        this.hide53 = false;
 
-      if(this.selected == 24){
-        this.chara5 -= 1;
-        this.defenseF = 0;
-        if(this.chara5 <= 0){
-          alert("Back to inferior zone");
-          this.hide54 = false;
-          this.hide5 = true;
-  
-          this.hide24 = false;
-          this.hide2 = true;
-  
-          this.selected = 0;
-          
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara5 = 2;
-            this.chara2 = 2; 
-            this.tour = true;
-          }
-        }    
-      }
-    }
-    if(this.hide25 == true && this.tour == false && this.defenseF == 1){
+        this.hide22 = false;
+        this.hide23 = true;
 
-      if(this.selected == 25){
-        this.chara5 -= 1;
-        this.defenseF = 0;
-        if(this.chara5 <= 0){
-          alert("Back to inferior zone");
-          this.hide55 = false;
-          this.hide54 = true;
-  
-          this.hide25 = false;
-          this.hide24 = true;
-  
-          this.selected = 0;
-          
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara5 = 2;
-            this.chara2 = 2; 
-            this.tour = true;
-          }
-        }    
-      }
+        this.chara5 = 2;
+        this.chara2 = 2; 
+        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+          alert("WIN IA");
+        }
+      }    
     }
-    if(this.hide3 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 24 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 3){
-        this.chara6 -= 1;
-        this.defenseF = 0;
-        if(this.chara6 <= 0){
-          alert("Back to inferior zone");
-          this.hide6 = false;
-          this.hide62 = true;
-  
-          this.hide3 = false;
-          this.hide32 = true;
-  
-          this.selected = 0;
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara6 = 2; 
-            this.chara3 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara5 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
       }
+      if(this.chara5 <= 0){
+        alert("Back to inferior zone");
+        this.hide54 = false;
+        this.hide5 = true;
+
+        this.hide24 = false;
+        this.hide2 = true;
+
+        this.chara5 = 2;
+        this.chara2 = 2; 
+      }    
     }
-    if(this.hide32 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 25 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 32){
-        this.chara6 -= 1;
-        this.defenseF = 0;
-        if(this.chara6 <= 0){
-          alert("Back to inferior zone");
-          this.hide62 = false;
-          this.hide63 = true;
-  
-          this.hide32 = false;
-          this.hide33 = true;
-  
-          this.selected = 0;
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara6 = 2;
-            this.chara3 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara5 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
       }
+      if(this.chara5 <= 0){
+        alert("Back to inferior zone");
+        this.hide55 = false;
+        this.hide54 = true;
+
+        this.hide25 = false;
+        this.hide24 = true;
+
+        this.chara5 = 2;
+        this.chara2 = 2; 
+      }    
     }
-    if(this.hide33 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 3 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 33){
-        this.chara6 -= 1;
-        this.defenseF = 0;
-        if(this.chara6 <= 0){
-          alert("Back to inferior zone");
-          this.hide63 = false;
-          
-  
-          this.hide32 = false;
-          this.hide33 = true;
-  
-          this.selected = 0;
-  
-          if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
-            alert("WIN IA");
-          }
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara6 = 2;
-            this.chara3 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara6 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
       }
+      if(this.chara6 <= 0){
+        alert("Back to inferior zone");
+        this.hide6 = false;
+        this.hide62 = true;
+
+        this.hide3 = false;
+        this.hide32 = true;
+
+        this.chara6 = 2; 
+        this.chara3 = 2; 
+      }    
     }
-    if(this.hide34 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 32 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 34){
-        this.chara6 -= 1;
-        this.defenseF = 0;
-        if(this.chara6 <= 0){
-          alert("Back to inferior zone");
-          this.hide64 = false;
-          this.hide6 = true;
-  
-          this.hide34 = false;
-          this.hide3 = true;
-  
-          this.selected = 0;
-          
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara6 = 2;
-            this.chara3 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara6 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true; 
+        this.tour = true;
       }
+      if(this.chara6 <= 0){
+        alert("Back to inferior zone");
+        this.hide62 = false;
+        this.hide63 = true;
+
+        this.hide32 = false;
+        this.hide33 = true;
+
+        this.chara6 = 2;
+        this.chara3 = 2;
+      }    
     }
-    if(this.hide35 == true && this.tour == false && this.defenseF == 1){
+    if(this.selected == 33 && this.tour == false && this.defenseF == 1){
 
-      if(this.selected == 35){
-        this.chara6 -= 1;
-        this.defenseF = 0;
-        if(this.chara6 <= 0){
-          alert("Back to inferior zone");
-          this.hide65 = false;
-          this.hide64 = true;
-  
-          this.hide35 = false;
-          this.hide34 = true;
-  
-          this.selected = 0;
-          
-          if(this.selected == 0){
-            this.hide = true;
-            this.chara6 = 2;
-            this.chara3 = 2; 
-            this.tour = true;
-          }
-        }    
+      this.chara6 -= 1;
+      this.defenseF = 0;
+        
+      this.selected = 0;
+      if(this.selected == 0){
+        this.hide = true; 
+        this.tour = true;
       }
+      if(this.chara6 <= 0){
+        alert("Back to inferior zone");
+        this.hide63 = false;
+        
+
+        this.hide32 = false;
+        this.hide33 = true;
+
+        this.chara6 = 2;
+        this.chara3 = 2;
+        if(this.hide4 == false && this.hide42 == false && this.hide43 == false && this.hide44 == false  && this.hide45 == false && this.hide5 == false && this.hide52 == false && this.hide53 == false && this.hide54 == false && this.hide55 == false && this.hide6 == false && this.hide62 == false && this.hide63 == false  && this.hide64 == false  && this.hide65 == false){
+          alert("WIN IA");
+        }
+      }    
+    }
+    if(this.selected == 34 && this.tour == false && this.defenseF == 1){
+
+      this.chara6 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true; 
+        this.tour = true;
+      }
+      if(this.chara6 <= 0){
+        alert("Back to inferior zone");
+        this.hide64 = false;
+        this.hide6 = true;
+
+        this.hide34 = false;
+        this.hide3 = true;
+
+        this.chara6 = 2;
+        this.chara3 = 2;
+      }    
+    }
+    if(this.selected == 35 && this.tour == false && this.defenseF == 1){
+
+      this.chara6 -= 1;
+      this.defenseF = 0;
+      this.selected = 0;
+      
+      if(this.selected == 0){
+        this.hide = true;
+        this.tour = true;
+      }
+      if(this.chara6 <= 0){
+        alert("Back to inferior zone");
+        this.hide65 = false;
+        this.hide64 = true;
+
+        this.hide35 = false;
+        this.hide34 = true;
+
+        this.chara6 = 2;
+        this.chara3 = 2; 
+      }    
     }
 
     else{
@@ -1043,124 +1024,98 @@ export class GamePage {
   setDefenseF(){
     console.log("defense frontale choisie");
     console.log(this.ia);
-    if(this.ia == 1){
-      if(this.hide1 == true && this.tour == false){
-        this.choice1();
-        if(this.shoot == 2){
+    if(this.shoot == 2){
+      if(this.ia == 1){
+        if(this.hide1 == true && this.tour == false){
+          this.choice1();
           this.cote();
         }
-      }
-      if(this.hide12 == true && this.tour == false){
-        this.choice12();
-        if(this.shoot == 2){
+        if(this.hide12 == true && this.tour == false){
+          this.choice12();
           this.cote();
         }
-      }
-      if(this.hide13 == true && this.tour == false){
-        this.choice13();
-        if(this.shoot == 2){
+        if(this.hide13 == true && this.tour == false){
+          this.choice13();
           this.cote();
         }
-      }
-      if(this.hide14 == true && this.tour == false){
-        this.choice14();
-        if(this.shoot == 2){
+        if(this.hide14 == true && this.tour == false){
+          this.choice14();
           this.cote();
         }
-      }
-      
-      if(this.hide15 == true && this.tour == false){
-        this.choice15();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      else{
-        this.selected = 0;
         
-        if(this.selected == 0){
-          this.hide = true;
-          this.tour = true;
-        }
-      }
-      this.hideD = true;
-    }
-    if(this.ia == 2){
-      if(this.hide2 == true && this.tour == false){
-        this.choice2();
-        if(this.shoot == 2){
+        if(this.hide15 == true && this.tour == false){
+          this.choice15();
           this.cote();
         }
+        else{
+          this.selected = 0;
+          console.log('else');
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+        this.hideD = true;
       }
-      if(this.hide22 == true && this.tour == false){
-        this.choice22();
-        if(this.shoot == 2){
+      if(this.ia == 2){
+        if(this.hide2 == true && this.tour == false){
+          this.choice2();
           this.cote();
         }
-      }
-      if(this.hide23 == true && this.tour == false){
-        this.choice23();
-        if(this.shoot == 2){
+        if(this.hide22 == true && this.tour == false){
+          this.choice22();
+          if(this.shoot == 2){
+            this.cote();
+          }
+        }
+        if(this.hide23 == true && this.tour == false){
+          this.choice23();
           this.cote();
         }
-      }
-      if(this.hide24 == true && this.tour == false){
-        this.choice24();
-        if(this.shoot == 2){
+        if(this.hide24 == true && this.tour == false){
+          this.choice24();
           this.cote();
         }
-      }
-      
-      if(this.hide25 == true && this.tour == false){
-        this.choice25();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      else{
-        this.selected = 0;
         
-        if(this.selected == 0){
-          this.hide = true;
-          this.tour = true;
+        if(this.hide25 == true && this.tour == false){
+          this.choice25();
+          this.cote();
+        }
+        else{
+          this.selected = 0;
+          
+          if(this.selected == 0){
+            this.hide = true;
+            this.tour = true;
+          }
+        }
+        this.hideD = true;
+      }
+      if(this.ia == 3){
+        if(this.hide3 == true && this.tour == false){
+          this.choice3();
+          this.cote();
+        }
+        if(this.hide32 == true && this.tour == false){
+          this.choice32();
+          this.cote();
+        }
+        if(this.hide33 == true && this.tour == false){
+          this.choice33();
+          this.cote();
+        }
+        if(this.hide34 == true && this.tour == false){
+          this.choice34();
+          this.cote();
+        }
+        
+        if(this.hide35 == true && this.tour == false){
+          this.choice35();
+          this.cote();
         }
       }
-      this.hideD = true;
     }
-    if(this.ia == 3){
-      if(this.hide3 == true && this.tour == false){
-        this.choice3();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      if(this.hide32 == true && this.tour == false){
-        this.choice32();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      if(this.hide33 == true && this.tour == false){
-        this.choice33();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      if(this.hide34 == true && this.tour == false){
-        this.choice34();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-      
-      if(this.hide35 == true && this.tour == false){
-        this.choice35();
-        if(this.shoot == 2){
-          this.cote();
-        }
-      }
-    
-    
+
     else{
       this.selected = 0;
       
@@ -1171,7 +1126,6 @@ export class GamePage {
     }
     this.hideD = true;
   }
-}
 
   setDefenseC(){
     console.log("defense coté choisie");
@@ -1208,6 +1162,15 @@ export class GamePage {
           this.frontal();
         }
       }
+      else{  
+        
+        this.selected = 0;
+        
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = true;
+        }
+      }
     }
     if(this.ia == 2){
       if(this.hide2 == true && this.tour == false){
@@ -1241,9 +1204,18 @@ export class GamePage {
           this.frontal();
         }
       }
+      else{  
+        
+        this.selected = 0;
+        
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = true;
+        }
+      }
     }
     if(this.ia == 3){
-      console.log('fuck');
+      
       if(this.hide3 == true && this.tour == false){
         this.choice3();
         if(this.shoot == 1){
@@ -1275,10 +1247,19 @@ export class GamePage {
           this.frontal();
         }
       }
+      else{  
+        
+        this.selected = 0;
+        
+        if(this.selected == 0){
+          this.hide = true;
+          this.tour = true;
+        }
+      }
     }
     
     else{  
-      console.log('fucke2');
+      
       this.selected = 0;
       
       if(this.selected == 0){
